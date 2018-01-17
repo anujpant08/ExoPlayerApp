@@ -15,11 +15,25 @@
 
         <ImageButton
             android:id="@+id/exo_play"
+            android:tint="#FF00A6FF"
             style="@style/ExoMediaButton.Play"/>
 
         <ImageButton
             android:id="@+id/exo_pause"
+            android:tint="#FF00A6FF"
             style="@style/ExoMediaButton.Pause"/>
+
+        <TextView
+            android:id="@+id/exo_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF00A6FF"/>
+
+        <TextView
+            android:id="@+id/exo_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF00A6FF"/>
     </LinearLayout>
 
 </LinearLayout>

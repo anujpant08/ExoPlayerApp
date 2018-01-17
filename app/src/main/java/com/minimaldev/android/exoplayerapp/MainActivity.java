@@ -38,14 +38,12 @@ import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DataSource;
+import com.google.android.exoplayer2.upstream.DataSpec;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
-import com.google.android.exoplayer2.upstream.cache.Cache;
-import com.google.android.exoplayer2.upstream.cache.CacheDataSource;
-import com.google.android.exoplayer2.upstream.cache.CacheDataSourceFactory;
-import com.google.android.exoplayer2.upstream.cache.LeastRecentlyUsedCacheEvictor;
-import com.google.android.exoplayer2.upstream.cache.SimpleCache;
+import com.google.android.exoplayer2.upstream.cache.*;
+import com.google.android.exoplayer2.upstream.cache.CacheUtil;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoRendererEventListener;
 
@@ -401,7 +399,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void removedownload(View view)
     {
-
+        Cache cache = new SimpleCache(this.getCacheDir(), new LeastRecentlyUsedCacheEvictor(1024 * 1024 * 10));
+        DataSpec dataSpec=new DataSpec(uri);
+        com.google.android.exoplayer2.upstream.cache.CacheUtil.remove(cache, CacheUtil.getKey(dataSpec));
 
     }
 
